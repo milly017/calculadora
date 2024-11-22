@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora</title>
+    <style>
+        button {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            font-size: 18px;
+            
+        }
+        #resultado {
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <p id="resultado">0</p>
+
+    <div>
+        <button onclick="location.reload()">C</button>
+        <button onclick="operacao('/')">/</button>
+        <button onclick="operacao('x')">x</button>
+        <button onclick="resultar()">=</button>
+    </div>
+
+    <div>
+        <button onclick="btn_(7)">7</button>
+        <button onclick="btn_(8)">8</button>
+        <button onclick="btn_(9)">9</button>
+        <button onclick="operacao('-')">-</button>
+    </div>
+
+    <div>
+        <button onclick="btn_(4)">4</button>
+        <button onclick="btn_(5)">5</button>
+        <button onclick="btn_(6)">6</button>
+        <button onclick="operacao('+')">+</button>
+    </div>
+
+    <div>
+        <button onclick="btn_(1)">1</button>
+        <button onclick="btn_(2)">2</button>
+        <button onclick="btn_(3)">3</button>
+        <button onclick="btn_(0)">0</button>
+    </div>
+
+    <script>
+        var n1 = 0;
+        var n2 = 0; 
+        var operador; 
+
+     
+        function btn_(parametro) {
+            if (document.getElementById("resultado").innerHTML == "0") {
+                document.getElementById("resultado").innerHTML = parametro;
+            } else {
+                document.getElementById("resultado").innerHTML += parametro;
+            }
+        }
+
+       
+        function operacao(op) {
+            operador = op;
+            n1 = document.getElementById("resultado").innerHTML;
+            document.getElementById("resultado").innerHTML = "0";
+        }
+
+     
+        function resultar() {
+            n2 = document.getElementById("resultado").innerHTML;
+            if (operador == "+") {
+                document.getElementById("resultado").innerHTML = Number(n1) + Number(n2);
+            } else if (operador == "-") {
+                document.getElementById("resultado").innerHTML = Number(n1) - Number(n2);
+            } else if (operador == "x") {
+                document.getElementById("resultado").innerHTML = Number(n1) * Number(n2);
+            } else if (operador == "/") {
+                if (n2 == 0) {
+                    document.getElementById("resultado").innerHTML = "Erro";
+                } else {
+                    document.getElementById("resultado").innerHTML = Number(n1) / Number(n2);
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
